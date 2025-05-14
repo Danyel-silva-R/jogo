@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conjuntos Interativos</title>
+  <link rel="icon" href="/src/img/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+  scroll-behavior: smooth;
+}
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Header */
+    header {
+      position: fixed;
+      background: linear-gradient(135deg, #4a00e0, #8e2de2);
+      color: white;
+      padding: 20px 0;
+      z-index: 999;
+    }
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    header h1 {
+      font-size: 2rem;
+    }
+    nav a {
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ffdd57;
+    }
+    /* Hero Section */
+    .hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 20px;
+}
+    .hero-content h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .btn {
+      padding: 12px 24px;
+      background-color: #ffdd57;
+      color: #333;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn:hover {
+      background-color: #ffc107;
+    }
+    /* Sections */
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+    section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+      color: #4a00e0;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+      border-radius: 4px;
+    }
+    .card h3 {
+      margin-bottom: 10px;
+      color: #8e2de2;
+    }
+    /* Venn Diagram Section */
+    .venn-controls {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .venn-controls button {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4a00e0;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .venn-controls button:hover {
+      background-color: #8e2de2;
+    }
+    .venn-diagrama {
+      text-align: center;
+      padding: 20px;
+      background-color: #eee;
+      border-radius: 10px;
+    }
+    .venn-diagrama img {
+      width: 100%;
+      max-width: 300px;
+      display: block;
+      margin: 20px auto;
+    }
+    /* Real World Section */
+    .real-world p {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    /* Footer */
+    footer {
+      background-color: #4a00e0;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    /* From Uiverse.io by elijahgummer */ 
+.button-with-icon {
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #0f988e;
+  font-family: "Istok Web", sans-serif;
+  letter-spacing: 1px;
+  padding: 0 12px;
+  text-align: center;
+  width: 120px;
+  height: 40px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: normal;
+  border-radius: 3px;
+  outline: none;
+  user-select: none;
+  cursor: pointer;
+  transform: translateY(0px);
+  position: relative;
+  box-shadow:
+    inset 0 30px 30px -15px rgba(255, 255, 255, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3),
+    inset 0 1px 20px rgba(0, 0, 0, 0),
+    0 3px 0 #0f1898,
+    0 3px 2px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.1),
+    0 10px 20px rgba(0, 0, 0, 0.1);
+  background: #12098d;
+  color: white;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+  transition: 150ms all ease-in-out;
+}
+
+.button-with-icon .icon {
+  margin-right: 8px;
+  width: 24px;
+  height: 24px;
+  transition: all 0.5s ease-in-out;
+}
+
+.button-with-icon:active {
+  transform: translateY(3px);
+  box-shadow:
+    inset 0 16px 2px -15px rgba(0, 0, 0, 0),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15),
+    inset 0 1px 20px rgba(0, 0, 0, 0.1),
+    0 0 0 #0f988e,
+    0 0 0 2px rgba(255, 255, 255, 0.5),
+    0 0 0 rgba(0, 0, 0, 0),
+    0 0 0 rgba(0, 0, 0, 0);
+}
+
+.button-with-icon:hover .text {
+  transform: translateX(80px);
+}
+.button-with-icon:hover .icon {
+  transform: translate(23px);
+}
+
+.text {
+  transition: all 0.5s ease-in-out;
+}
+
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div id="particles-js"></div> <!-- Agora diretamente na .hero -->
+    <div class="hero-content">
+      <h2>Aprenda Conjuntos de Forma Visual e Interativa!</h2>
+      <p>Explore os conceitos fundamentais de conjuntos e suas operações com exemplos modernos e dinâmicos.</p>
+      <a href="#conceitos" class="btn">Começar Aprendizado</a>
+    </div>
+  </div>
+   
+<!--   
+  <header>
+    <div class="container">
+      <h1>Conjuntos Interativos</h1>
+      <nav>
+        <a href="#conceitos">Conceitos</a>
+        <a href="#relacoes">Relações</a>
+        <a href="#quiz">Quiz</a>
+      </nav>
+    </div>
+  </header> -->
+
+  <!-- Hero Section with Particles.js -->
+  
+
+  <!-- Conceitos Section -->
+  <section id="conceitos">
+    <h2>O que são Conjuntos?</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Definição</h3>
+        <img src="https://static.todamateria.com.br/upload/di/gr/digrama.jpg" alt="Imagem de Conjunto Básico">
+        <p>Conjunto é uma coleção de elementos distintos e bem definidos, como números ou objetos.</p>
+      </div>
+      <div class="card">
+        <h3>Notações</h3>
+        <img src="https://s4.static.brasilescola.uol.com.br/be/2020/06/interseccao-a-b.jpg" alt="Notações de Conjuntos">
+        <p>Utilizamos símbolos como ∈ (pertence), ⊂ (subconjunto), ∪ (união), ∩ (interseção), e − (diferença).</p>
+      </div>
+      <div class="card">
+        <h3>Representações</h3>
+        <img src="https://s2.static.brasilescola.uol.com.br/img/2019/12/entre-tres-conjuntos(1).jpg" alt="Diagrama de Venn">
+        <p>Podem ser listadas, descritas ou representadas por diagramas de Venn.</p>
+      </div>
+      <div class="card">
+        <h3>Conjunto dos principais sistemas operacionais de computadores</h3>
+        <img src="/src/img/Logos dos Sistemas Operativos.png" alt="Cores como conjuntos">
+        <p>Esse conjunto representa os sistemas operacionais mais usados em computadores atualmente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Relações Section -->
+  <section id="relacoes">
+    <h2>Relações entre Conjuntos</h2>
+    <p style="text-align: center;">Veja exemplos visuais das principais operações entre conjuntos:</p>
+    <div class="venn-controls">
+      <button onclick="mostrar('uniao')">União (A ∪ B)</button>
+      <button onclick="mostrar('intersecao')">Interseção (A ∩ B)</button>
+      <button onclick="mostrar('diferenca')">Diferença (A - B)</button>
+    </div>
+    <div id="venn-diagrama" class="venn-diagrama">Selecione uma operação para visualizar o exemplo.</div>
+  </section>
+
+  <!-- Real World Section -->
+  <section class="real-world">
+    <h2>Conjuntos no Mundo Real</h2>
+    <p>Conjuntos são usados em bancos de dados, linguagens de programação, lógica matemática, estatísticas, engenharia de software, e até em campanhas de marketing para segmentação de públicos!</p>
+ <!-- From Uiverse.io by elijahgummer --> 
+<button class="button-with-icon">
+  <svg
+    class="icon"
+    id="Play"
+    viewBox="0 0 48 48"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      class="color000000 svgShape"
+      fill="#ffffff"
+      d="M12 39c-.549 0-1.095-.15-1.578-.447A3.008 3.008 0 0 1 9 36V12c0-1.041.54-2.007 1.422-2.553a3.014 3.014 0 0 1 2.919-.132l24 12a3.003 3.003 0 0 1 0 5.37l-24 12c-.42.21-.885.315-1.341.315z"
+    ></path>
+  </svg>
+  <span class="text">Play</span>
+</button>
+
+  </section>
+
+  <!-- Footer -->
+  <footer id="contato">
+    <p>© 2025 Conjuntos Interativos. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Particles.js Library -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    /* ParticlesJS Config */
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle"
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false
+        },
+        "size": {
+          "value": 3,
+          "random": true
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4
+        },
+        "move": {
+          "enable": true,
+          "speed": 3,
+          "direction": "none",
+          "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          }
+        },
+        "modes": {
+          "repulse": {
+            "distance": 100
+          },
+          "push": {
+            "particles_nb": 4
+          }
+        }
+      },
+      "retina_detect": true
+    });
+
+    // Função para trocar diagramas de relações entre conjuntos
+    function mostrar(tipo) {
+      const div = document.getElementById('venn-diagrama');
+      let img = '';
+      let legenda = '';
+
+      switch (tipo) {
+        case 'uniao':
+          img = 'https://static.todamateria.com.br/upload/un/ia/uniao2000.gif';
+          legenda = 'A operação de união representa a junção de todos os elementos que pertencem a dois ou mais conjuntos. Para indicar essa operação usamos o símbolo união. São os elementos que pertencem a A, B, ou ambos.No diagrama de Venn essa operação é indicada pintando toda parte interna das áreas que representam os conjuntos.';
+          break;
+        case 'intersecao':
+          img = 'https://static.todamateria.com.br/upload/in/te/intersecao1500.gif';
+          legenda = 'A interseção entre conjuntos é o conjunto de elementos que pertencem simultaneamente a dois ou mais conjuntos.Assim, dados dois conjuntos A e B, a interseção entre eles será denotada por A intersecção B e indicada no diagrama de Venn pela pintura da parte comum.';
+          break;
+        case 'diferenca':
+          img = 'https://static.todamateria.com.br/upload/di/fe/diferencaonjunto-0.jpg';
+          legenda = 'A diferença entre dois conjuntos corresponde a operação de escrever um conjunto eliminando os elementos que também fazem parte de outro.Essa operação é indicada por A - B. O resultado são os elementos que pertencem a A, mas que não pertencem a B.Para representar esta operação através do diagrama de Venn, desenhamos dois círculos e pintamos um deles, excluindo a parte em comum dos conjuntos.';
+          break;
+        default:
+          legenda = 'Selecione uma operação para visualizar.';
+      }
+
+      div.innerHTML = img ? `<img src="${img}" alt="${tipo}"><p>${legenda}</p>` : legenda;
+    }
+  </script>
+</body>
+</html>
+
+ 
